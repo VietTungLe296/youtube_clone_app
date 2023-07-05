@@ -9,7 +9,7 @@ import Foundation
 
 struct Constants {
     
-    static let API_URL = "https://www.googleapis.com/youtube/v3/playlistItems"
+    static let API_URL = "https://www.googleapis.com/youtube/v3"
     
     static let SAMPLE_PLAYLIST_ID = "PLSaac19x1K73ilf4uHaad6-9sf3hjfcI8"
     
@@ -18,11 +18,13 @@ struct Constants {
               let configFileData = try? Data(contentsOf: configFileURL),
               let json = try? JSONSerialization.jsonObject(with: configFileData, options: []),
               let configDict = json as? [String: Any],
-              let apiToken = configDict["API_KEY"] as? String else {
+              let apiKey = configDict["API_KEY"] as? String else {
             print("Invalid or missing API token in the configuration file.")
             return nil
         }
         
-        return apiToken
+        return apiKey
     }
+    
+    static var YT_EMBED_URL = "https://www.youtube.com/embed/"
 }

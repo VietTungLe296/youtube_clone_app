@@ -14,6 +14,10 @@ struct Video: Decodable {
     var thumbnail = ""
     var published = Date()
     
+    var publishedInString: String {
+        CustomDateFormatter.getFormatted(self.published)
+    }
+    
     enum CodingKeys: String, CodingKey {
         case snippet
         case title
@@ -21,9 +25,17 @@ struct Video: Decodable {
         case thumbnails
         case high
         case thumbnail = "url"
-        case published = "pulishedAt"
+        case published = "publishedAt"
         case resourceId
         case videoId
+    }
+    
+    init() {
+        self.videoId = "12345"
+        self.title = "Sample video"
+        self.description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+        self.thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoCr6dhIe0zHTYAT7SHlggQ7syTtdNSDHipzh-_JZrBw&s"
+        self.published = Date.now
     }
     
     init(from decoder: Decoder) throws {
