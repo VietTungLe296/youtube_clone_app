@@ -16,7 +16,7 @@ struct VideoRow: View {
         Button {
             isPresenting = true
         } label: {
-            VStack(alignment: .leading, spacing: 30) {
+            VStack(alignment: .leading, spacing: 10) {
                 GeometryReader { proxy in
                     Image(uiImage: UIImage(data: videoPreview.thumbnailData) ?? UIImage())
                         .resizable()

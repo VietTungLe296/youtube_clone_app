@@ -90,4 +90,7 @@ fastlane/test_output
 iOSInjectionProject/
 
 .DS_Store
+
+# Credentials
 config.json
+GoogleService-Info.plist

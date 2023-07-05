@@ -6,12 +6,26 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct YoutubeCloneApp: App {
+    @StateObject var viewModel = AuthenticationViewModel()
+    
+    init() {
+        setupAuthentication()
+    }
+    
     var body: some Scene {
         WindowGroup {
-           Home()
+            EntryView()
+                .environmentObject(viewModel)
         }
+    }
+}
+
+extension YoutubeCloneApp {
+    private func setupAuthentication() {
+        FirebaseApp.configure()
     }
 }
